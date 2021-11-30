@@ -28,48 +28,21 @@ class YA_API_folder_maker:
                             headers=self.headers)
 
     def delete_folder(self):
-        status_code_dict = {
-            200: 'OK',
-            202: 'Операция выполняется асинхронно.',
-            204: 'OK',
-            400: 'Проверка md5 возможна только для файлов',
-            401: 'Не авторизован.',
-            403: 'API недоступно. Ваши файлы занимают больше места, чем у вас есть. Удалите лишнее или увеличьте объём Диска.',
-            404: 'Не удалось найти запрошенный ресурс.',
-            406: 'Ресурс не может быть представлен в запрошенном формате.',
-            409: 'Ресурс уже существует.',
-            423: 'Ресурс заблокирован. Возможно, над ним выполняется другая операция.',
-            429: 'Слишком много запросов.',
-            503: 'Сервис временно недоступен.'
-        }
         response = requests.delete(self.YA_API_BASE_URL,
                                    params=self.params,
                                    headers=self.headers)
         if 200 <= response.status_code <= 299:
             return True
         else:
-            print(status_code_dict[response.status_code])
             return False
 
     def is_test_folder_exist(self):
-        status_code_dict = {
-        200: 'Успешно.',
-        400: 'Некорректные данные.',
-        401: 'Не авторизован.',
-        403: 'API недоступно. Ваши файлы занимают больше места, чем у вас есть. Удалите лишнее или увеличьте объём Диска.',
-        404: 'Не удалось найти запрошенный ресурс.',
-        406: 'Ресурс не может быть представлен в запрошенном формате.',
-        429: 'Слишком много запросов.',
-        503: 'Сервис временно недоступен.',
-        }
         response = requests.get(self.YA_API_BASE_URL,
                                     params=self.params,
                                     headers=self.headers)
-        print(response.text)
         if response.status_code == 200:
             return True
         else:
-            print(status_code_dict[response.status_code])
             return False
 
 
