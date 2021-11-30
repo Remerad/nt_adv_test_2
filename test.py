@@ -3,7 +3,7 @@ import random
 
 
 class TestFolderMakerPytest:
-    ya_token = 'AQAAAAATlnZQAADLW5A840miiEbKjoTh8Um5GHo'
+    ya_token = ''
 
     def setup(self):
         self.test_YAfm = YA_API_folder_maker(self.ya_token)
